@@ -33,6 +33,7 @@ class Image {
           }
         }
       ]
+    }
   }
 
   isExactly({A, B}) {
