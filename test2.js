@@ -157,4 +157,4 @@ MyExtension.prototype.myReporter = function (args) {
     });
 };
 
-Scratch.extensions.register(new MyExtension());
+Scratch.extensions.register(new MyExtension()); 
