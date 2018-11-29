@@ -217,4 +217,4 @@ SomeBlocks.prototype.myReporter = function (args) {
         TEXT: args.TEXT,
         LETTER: result
     });
-};
+}; 
