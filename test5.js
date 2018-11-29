@@ -33,4 +33,4 @@ class Scratch3MyExtension {
         return Math.pow(BASE, POWER);
     }
 }
-module.exports = Scratch3MyExtension;
+Scratch.extensions.register(new Scratch3MyExtension());
