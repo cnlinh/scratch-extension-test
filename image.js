@@ -41,4 +41,5 @@ class Image {
   }
 }
 
-Scratch.extensions.register(new ImageRecognition()); 
+Scratch.extensions.register(new Image()); 
+
