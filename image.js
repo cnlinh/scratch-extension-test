@@ -1,8 +1,6 @@
 class MachineLearningImages {
 
     constructor() {
-        this._labels = [ {{#labels}} '{{name}}', {{/labels}} ];
-
         this._icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gcYFDscg0kLkgAAAQdJREFUSMdj9PZK+M9AR8DEQGdAdwtZCCnYsnU+0Yb5eCdSbiGxBhHrsOEfh6MWjlo4DEoaUksbQoCR3rUFCyVlJjl6WCgtM0nVgzXRFJfEYYg1t+QRNJiXl4W8VCotLY3Cd3DUZvj+/TtBw/j5uciz8ODBgwxCQuxwvpaWFsOLFy9olw937jjBEB7hC+ffv3+fgYODg3YWMjExMnz9+pWBgYGBQVlZmGH7tjO0t3DRwm0MjIz/GTw8naFiTLQuaRgZEpN8GZ4/f06864lwFFYLf/z4A7GSkZFh3drDDAwMDAxv374laFhRcTbDnTt3GBgYGBiuXLnCcGD/VdxFG71KGsZh3/IGABK+UkZW++njAAAAAElFTkSuQmCC';
     }
 
@@ -11,9 +9,9 @@ class MachineLearningImages {
 
         return {
             // making the id unique to allow multiple instances
-            id: 'mlforkidsimages{{{ projectid }}}',
+            id: 'image',
             // the name of the student project
-            name: '{{{ projectname }}}',
+            name: 'Image',
 
             // colour for the blocks
             colour: '#4B4A60',
@@ -55,31 +53,6 @@ class MachineLearningImages {
                 },
 
                 // provide blocks representing each of the labels
-                {{#labels}}
-                {
-                    opcode: 'return_label_{{idx}}',
-                    blockType: Scratch.BlockType.REPORTER,
-                    text: '{{name}}'
-                },
-                {{/labels}}
-
-                // add training data to the project
-                {
-                    opcode: 'addTraining',
-                    blockType: Scratch.BlockType.COMMAND,
-                    text: 'add training data [TEXT] [LABEL]',
-                    arguments: {
-                        TEXT: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: 'costume image'
-                        },
-                        LABEL: {
-                            type: Scratch.ArgumentType.STRING,
-                            defaultValue: this._labels[0],
-                            menu: 'labels'
-                        }
-                    }
-                }
             ],
 
             menus: {
@@ -96,12 +69,6 @@ class MachineLearningImages {
         return new Promise(resolve => getImageClassificationResponse(IMAGE, md5(IMAGE), 'confidence', resolve));
     }
 
-
-    {{#labels}}
-    return_label_{{idx}} () {
-        return '{{name}}';
-    }
-    {{/labels}}
 
 
     addTraining({ TEXT, LABEL }) {
