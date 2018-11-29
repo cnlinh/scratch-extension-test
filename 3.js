@@ -86,4 +86,4 @@ Notifications.prototype.notPermitted = function () {
 };
 
 Scratch.extensions.register(new Notifications());
-navigator.Notification.requestPermission();
+navigator.Notification.requestPermission(); 
