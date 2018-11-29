@@ -49,26 +49,25 @@ class MyExtension {
                   filter: ['someBlocks.wedo2', 'sprite', 'stage']
               }
           ]
-
-          myReporter({args}) {
-              // This message contains ICU placeholders, not Scratch placeholders
-              const message = formatMessage({
-                  id: 'myReporter.result',
-                  defaultMessage: 'Letter {LETTER_NUM} of {TEXT} is {LETTER}.',
-                  description: 'The text template for the "myReporter" block result'
-              });
-
-              // Note: this implementation is not Unicode-clean; it's just here as an example.
-              const result = args.TEXT.charAt(args.LETTER_NUM);
-
-              return message.format({
-                  LETTER_NUM: args.LETTER_NUM,
-                  TEXT: args.TEXT,
-                  LETTER: result
-              });
-          }
         }
       }
-    }
+      myReporter({args}) {
+          // This message contains ICU placeholders, not Scratch placeholders
+          const message = formatMessage({
+              id: 'myReporter.result',
+              defaultMessage: 'Letter {LETTER_NUM} of {TEXT} is {LETTER}.',
+              description: 'The text template for the "myReporter" block result'
+          });
+
+          // Note: this implementation is not Unicode-clean; it's just here as an example.
+          const result = args.TEXT.charAt(args.LETTER_NUM);
+
+          return message.format({
+              LETTER_NUM: args.LETTER_NUM,
+              TEXT: args.TEXT,
+              LETTER: result
+          });
+        }
+}
 
 Scratch.extensions.register(new MyExtension());
